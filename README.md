@@ -10,20 +10,35 @@ out the `AlexCline-mounts` module.
 Examples
 --------
 
-fstab { 'A test fstab entry':
-  source => '/dev/sdb2',
-  dest   => '/mnt/foobar',
-  type   => 'ext4',
-}
+    fstab { 'A test fstab entry':
+      source => '/dev/sdb2',
+      dest   => '/mnt/foobar',
+      type   => 'ext4',
+    }
 
-fstab { 'Another test fstab entry':
-  source => 'ahost:/data',
-  dest   => '/data',
-  type   => 'nfs',
-  opts   => 'defaults,noatime,nofail,ro',
-  dump   => 0,
-  passno => 0,
-}
+    fstab { 'Another test fstab entry':
+      source => 'ahost:/data',
+      dest   => '/data',
+      type   => 'nfs',
+      opts   => 'defaults,noatime,nofail,ro',
+      dump   => 0,
+      passno => 0,
+    }
+
+    fstab { 'Remove A test fstab entry':
+      source => '/dev/sdb2',
+      dest   => '/mnt/foobar',
+      type   => 'ext4',
+      ensure => absent,
+    }
+
+    fstab { 'Remove Another test fstab entry':
+      source => 'ahost:/data',
+      dest   => '/data',
+      type   => 'nfs',
+      ensure => absent,
+    }
+
 
 
 Support

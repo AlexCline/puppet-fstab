@@ -1,3 +1,5 @@
+# define fstab::augeas
+
 define fstab::augeas(
   $source = undef,
   $dest   = undef,
