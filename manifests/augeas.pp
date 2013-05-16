@@ -30,9 +30,9 @@ define fstab::augeas(
   $fstab_changes      = concat($fstab_parts_onetwo, $fstab_part_three)
 
   augeas { "${source},${dest},${opts}":
-    context => "/files/${fstab::variables::fstab_file}",
+    context => "/files${fstab::variables::fstab_file}",
     changes => $fstab_changes,
-    onlyif  => "match *[spec='${source}' and file='${dest}' vfstype='${type}'] size == 0",
+    onlyif  => "match *[spec='${source}' and file='${dest}' and vfstype='${type}'] size == 0",
 #    notify  => Exec["/bin/mount ${dest}"],
 #    require => File[$dest_dirtree],
   }
