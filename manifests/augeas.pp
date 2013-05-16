@@ -29,7 +29,7 @@ define fstab::augeas(
   $fstab_parts_onetwo = concat($fstab_part_one, $fstab_part_two)
   $fstab_changes      = concat($fstab_parts_onetwo, $fstab_part_three)
 
-  augeas { "${source},${dest},${opts}":
+  augeas { "${source},${dest},${type},${opts}":
     context => "/files${fstab::variables::fstab_file}",
     changes => $fstab_changes,
     onlyif  => "match *[spec='${source}' and file='${dest}' and vfstype='${type}'] size == 0",

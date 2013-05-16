@@ -57,7 +57,7 @@ define fstab(
 
   case $::operatingsystem {
     redhat, centos, amazon: {
-      fstab::augeas { "${source},${dest},${type}":
+      fstab::augeas { "${source},${dest},${type},${opts}":
         source => $source,
         dest   => $dest,
         type   => $type,
