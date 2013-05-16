@@ -12,7 +12,7 @@ define fstab::augeas(
   # Get the fstab_file for this OS
   include fstab::variables
 
-  $res_name = "${source}_${dest}_${type}_${opts}_${ensure}"
+  $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
 
   case $ensure {
     'present': {
