@@ -21,7 +21,7 @@ define fstab(
     error('The type parameter is required.')
   }
 
-  $res_name = "${source}_${dest}_${type}_${opts}_${ensure}"
+  $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
 
   case $::operatingsystem {
     redhat, centos, amazon: {
