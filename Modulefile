@@ -1,0 +1,7 @@
+name    'AlexCline-fstab'
+version '0.0.1'
+author 'Alex Cline <alex.cline@gmail.com>'
+license 'Apache License, Version 2.0'
+summary 'The fstab module helps puppet manage entries in fstab.'
+description 'The fstab module helps puppet manage entries in fstab.'
+project_page 'https://github.com/AlexCline/fstab'
