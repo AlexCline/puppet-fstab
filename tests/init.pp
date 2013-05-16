@@ -23,3 +23,17 @@ fstab { 'Another test fstab entry':
   dump   => 0,
   passno => 0,
 }
+
+fstab { 'Remove A test fstab entry':
+  source => '/dev/sdb2',
+  dest   => '/mnt/foobar',
+  type   => 'ext4',
+  ensure => absent,
+}
+
+fstab { 'Remove Another test fstab entry':
+  source => 'ahost:/data',
+  dest   => '/data',
+  type   => 'nfs',
+  ensure => absent,
+}

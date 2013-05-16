@@ -41,7 +41,8 @@ define fstab(
   $type   = undef,
   $opts   = 'defaults',
   $dump   = 0,
-  $passno = 0){
+  $passno = 0,
+  $ensure = 'present'){
 
   if $source == undef {
     error('The source parameter is required.')
@@ -55,15 +56,18 @@ define fstab(
     error('The type parameter is required.')
   }
 
+  $res_name = "${source}_${dest}_${type}_${opts}_${ensure}"
+
   case $::operatingsystem {
     redhat, centos, amazon: {
-      fstab::augeas { "${source},${dest},${type},${opts}":
+      fstab::augeas { $res_name:
         source => $source,
         dest   => $dest,
         type   => $type,
         opts   => $opts,
         dump   => $dump,
         passno => $passno,
+        ensure => $ensure,
       }
     }
     default: { error('Your OS isn\'t supported by the fstab module yet.') }
