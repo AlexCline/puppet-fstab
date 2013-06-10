@@ -35,7 +35,7 @@ define fstab(
         ensure => $ensure,
       }
     }
-    default: { error('Your OS isn\'t supported by the fstab module yet.') }
+    default: { err('Your OS isn\'t supported by the fstab module yet.') }
   }
 
 }
