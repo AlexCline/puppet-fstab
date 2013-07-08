@@ -17,7 +17,7 @@ define fstab::augeas(
   # Resources should have inherited their parent's name, but didn't.  Now there are old
   # augeas resources present that should be removed when the new resources are added.
   $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
-  augeas { $res_name:
+  augeas { $name:
     context => "/files${fstab::variables::fstab_file}",
     changes => [
       "rm *[spec='${source}' and file='${dest}' and vfstype='${type}']",
