@@ -12,8 +12,6 @@ define fstab::augeas(
   # Get the fstab_file for this OS
   include fstab::variables
 
-  $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
-
   case $ensure {
     'present': {
       # The ordering of the changes in augeas matters, so we'll build
@@ -37,7 +35,7 @@ define fstab::augeas(
       $fstab_parts_onetwo = concat($fstab_part_one, $fstab_part_two)
       $fstab_changes      = concat($fstab_parts_onetwo, $fstab_part_three)
 
-      augeas { $res_name:
+      augeas { $name:
         context => "/files${fstab::variables::fstab_file}",
         changes => $fstab_changes,
         onlyif  => "match *[spec='${source}' and file='${dest}' and vfstype='${type}'] size == 0",
@@ -46,7 +44,7 @@ define fstab::augeas(
       }
     }
     'absent': {
-      augeas { $res_name:
+      augeas { $name:
         context => "/files${fstab::variables::fstab_file}",
         changes => [
           "rm *[spec='${source}' and file='${dest}' and vfstype='${type}']",

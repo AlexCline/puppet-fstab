@@ -21,11 +21,9 @@ define fstab(
     error('The type parameter is required.')
   }
 
-  $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
-
   case $::operatingsystem {
     redhat, centos, amazon: {
-      fstab::augeas { $res_name:
+      fstab::augeas { $name:
         source => $source,
         dest   => $dest,
         type   => $type,
