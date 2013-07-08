@@ -12,6 +12,20 @@ define fstab::augeas(
   # Get the fstab_file for this OS
   include fstab::variables
 
+
+  # This is still here to remove the old fstab entries created by versions 0.2.2 and older.
+  # Resources should have inherited their parent's name, but didn't.  Now there are old
+  # augeas resources present that should be removed when the new resources are added.
+  $res_name = "${source} ${dest} ${type} ${opts} ${ensure}"
+  augeas { $name:
+    context => "/files${fstab::variables::fstab_file}",
+    changes => [
+      "rm *[spec='${source}' and file='${dest}' and vfstype='${type}']",
+    ],
+    onlyif  => "match *[spec='${source}' and file='${dest}' and vfstype='${type}'] size > 0"
+  }
+
+
   case $ensure {
     'present': {
       # The ordering of the changes in augeas matters, so we'll build
