@@ -52,5 +52,8 @@ define fstab::augeas(
         onlyif  => "match *[spec='${source}' and file='${dest}' and vfstype='${type}'] size > 0"
       }
     }
+    default: {
+      err("fstab: Invalid value specified for 'ensure' parameter.  Got ${ensure}")
+    }
   }
 }

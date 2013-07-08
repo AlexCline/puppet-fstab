@@ -16,17 +16,17 @@ fstab { 'Another test fstab entry':
 }
 
 fstab { 'Remove A test fstab entry':
+  ensure  => absent,
   source  => '/dev/sdb2',
   dest    => '/mnt/foobar',
   type    => 'ext4',
-  ensure  => absent,
   require => Fstab['A test fstab entry'],
 }
 
 fstab { 'Remove Another test fstab entry':
+  ensure  => absent,
   source  => 'ahost:/data',
   dest    => '/data',
   type    => 'nfs',
-  ensure  => absent,
   require => Fstab['Another test fstab entry'],
 }

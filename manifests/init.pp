@@ -24,13 +24,13 @@ define fstab(
   case $::operatingsystem {
     redhat, centos, amazon: {
       fstab::augeas { $name:
+        ensure => $ensure,
         source => $source,
         dest   => $dest,
         type   => $type,
         opts   => $opts,
         dump   => $dump,
         passno => $passno,
-        ensure => $ensure,
       }
     }
     default: { err('Your OS isn\'t supported by the fstab module yet.') }
