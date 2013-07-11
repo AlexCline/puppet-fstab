@@ -39,10 +39,10 @@ Examples
       ensure => absent,
     }
 
-Dependancies
+Dependencies
 ------------
 
-This module depends on [ripienaar's concat](https://github.com/ripienaar/puppet-concat)
+This module depends on [PuppetLab's stdlib](http://forge.puppetlabs.com/puppetlabs/stdlib) module.
 
 
 Support
