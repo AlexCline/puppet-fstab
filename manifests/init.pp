@@ -22,7 +22,7 @@ define fstab(
   }
 
   case $::operatingsystem {
-    redhat, centos, amazon: {
+    redhat, debian, centos, amazon: {
       fstab::augeas { $name:
         ensure => $ensure,
         source => $source,
