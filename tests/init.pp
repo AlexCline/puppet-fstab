@@ -30,3 +30,22 @@ fstab { 'Remove Another test fstab entry':
   type    => 'nfs',
   require => Fstab['Another test fstab entry'],
 }
+
+fstab {'AWS Root Drive':
+  source => 'LABEL=cloudimg-rootfs',
+  dest   => '/',
+  type   => 'ext4',
+  opts   => 'defaults,acl',
+  dump   => 0,
+  passno => 0,
+}
+
+fstab {'Revert AWS Root Drive':
+  source  => 'LABEL=cloudimg-rootfs',
+  dest    => '/',
+  type    => 'ext4',
+  opts    => 'defaults,acl',
+  dump    => 0,
+  passno  => 0,
+  require => Fstab['AWS Root Drive'],
+}
