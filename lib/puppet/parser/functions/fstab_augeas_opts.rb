@@ -138,7 +138,11 @@ $fstab_changes_real will be:
     EOS
   ) do |arguments|
     opts = arguments[0]
-    scope = arguments[1] || "01"  # The default of '01' causes augeas to create a new entry.
+    if arguments[1].nil?
+      scope = "01" # The default of '01' causes augeas to create a new entry.
+    else
+      scope = arguments[1] 
+    end
 
     unless opts.is_a?(String)
       raise Puppet::ParseError, "fstab_augeas_opts(): expected first argument to be a String, got #{opts.inspect}"
