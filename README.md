@@ -39,6 +39,10 @@ Examples
       ensure => absent,
     }
 
+Dependancies
+------------
+
+This module depends on [ripienaar's concat](https://github.com/ripienaar/puppet-concat)
 
 
 Support
