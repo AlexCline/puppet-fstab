@@ -21,8 +21,8 @@ define fstab(
     error('The type parameter is required.')
   }
 
-  case $::operatingsystem {
-    redhat, debian, centos, amazon: {
+  case $::osfamily {
+    redhat, debian: {
       fstab::augeas { $name:
         ensure => $ensure,
         source => $source,
