@@ -10,15 +10,15 @@ define fstab(
   $ensure = 'present'){
 
   if $source == undef {
-    error('The source parameter is required.')
+    err('The source parameter is required.')
   }
 
   if $dest == undef {
-    error('The dest parameter is required.')
+    err('The dest parameter is required.')
   }
 
   if $type == undef {
-    error('The type parameter is required.')
+    err('The type parameter is required.')
   }
 
   case $::osfamily {
