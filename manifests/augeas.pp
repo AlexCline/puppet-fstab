@@ -9,6 +9,9 @@ define fstab::augeas(
   $passno = 0,
   $ensure = 'present'){
 
+  # Get the fstab_file for this OS
+  include fstab::variables
+
   case $ensure {
     'present': {
 
