@@ -39,6 +39,25 @@ Examples
       ensure => absent,
     }
 
+Examples using Hiera data
+--------
+    fstab::fstabs::fstabs:
+      'A test fstab entry':
+        source: '/dev/sdb2'
+        dest: '/mnt/foobar'
+        type: 'ext4'
+      'Another test fstab entry':
+        source: 'ahost:/data'
+        dest: '/data'
+        type: 'nfs'
+        opts: 'defaults,noatime,nofail,ro'
+      'Another test fstab entry with encrypted password':
+        source: '//10.250.246.70/Classified'
+        dest: '/data'
+        type: 'cifs'
+        opts: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAcgW4S3K3Dg4tUxDVRIYMygoV4QmB5v3vaJvQXbhxMcPKO+KNFj4FavzVIUvOktvjh8bdNW0I2jD9lTn3J22i28BCpZrmNHcOZAOgoKtW1vi/1nkj8PX3ibxSGY8DWG4fLpDW4rknWBQXN42w+UsVvipopETd4b0Bw1YBDL6myVqkDOQZE6eAHzDRkR+02ZKw4upkxIZ20uLPx4D8hFWAPuqkmZhURedloTzpzS1AeulSxfok1MZ8JQKV19DHkhCrhUePfR6G+0bOV/Ll0C0PmzdcODmtwzp7h9kUm8kQL3vitsg5VOlf8qKV56fVksVTjrobE9OgyduJ8UzYxESE/DBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCUgcm4oa3wOSNwd50BuVIpgCCxn4HS0vP1lmhwTuXH8gWTJDW0qwq8UIs0rOTQUrKrEQ==]
+
+
 Dependencies
 ------------
 
