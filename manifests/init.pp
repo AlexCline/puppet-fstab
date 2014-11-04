@@ -7,7 +7,8 @@ define fstab(
   $opts   = 'defaults',
   $dump   = 0,
   $passno = 0,
-  $ensure = 'present'){
+  $ensure = 'present'
+) {
 
   if $source == undef {
     err('The source parameter is required.')
@@ -35,5 +36,4 @@ define fstab(
     }
     default: { err('Your OS isn\'t supported by the fstab module yet.') }
   }
-
 }
