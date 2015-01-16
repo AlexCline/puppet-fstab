@@ -34,11 +34,11 @@ define fstab::augeas(
 
     }
     'absent': {
+      $fstab_match_line = "*[spec='${source}' and file='${dest}']"
       augeas { $name:
-        context => "/files${fstab::variables::fstab_file}",
-        changes => [
-          "rm ${fstab_match_line}",
-        ],
+        incl    => "/etc/fstab",
+        lens    => "Fstab.lns",
+        changes => "rm ${fstab_match_line}",
         onlyif  => "match ${fstab_match_line} size > 0"
       }
     }
