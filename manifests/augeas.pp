@@ -36,7 +36,7 @@ define fstab::augeas(
     'absent': {
       $fstab_match_line = "*[spec='${source}' and file='${dest}']"
       augeas { $name:
-        context => "/files${fstab::variables::fstab_file}",
+        incl => ${fstab::variables::fstab_file},
         changes => [
           "rm ${fstab_match_line}",
         ],
