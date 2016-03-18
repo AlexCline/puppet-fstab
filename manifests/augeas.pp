@@ -8,6 +8,7 @@ define fstab::augeas(
   $dump   = 0,
   $passno = 0,
   $ensure = 'present'){
+  $fstab_match_line = "*[spec='${source}' and file='${dest}']"
 
   case $ensure {
     'present': {
