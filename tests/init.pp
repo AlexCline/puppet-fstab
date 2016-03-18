@@ -1,3 +1,5 @@
+include fstab::variables
+
 # fstab module test resources.
 
 fstab { 'A test fstab entry':
@@ -41,6 +43,7 @@ fstab {'AWS Root Drive':
 }
 
 fstab {'Revert AWS Root Drive':
+  ensure  => absent,
   source  => 'LABEL=cloudimg-rootfs',
   dest    => '/',
   type    => 'ext4',
@@ -48,4 +51,11 @@ fstab {'Revert AWS Root Drive':
   dump    => 0,
   passno  => 0,
   require => Fstab['AWS Root Drive'],
+}
+
+fstab { 'remove proc':
+  ensure => absent,
+  source => 'proc',
+  dest   => '/proc',
+  type   => 'proc',
 }
